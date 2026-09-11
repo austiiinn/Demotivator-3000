@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arduino LCD Demotivator</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    background-image: url("bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+}
+
+.lcd {
+    position: relative;
+    width: min(849px, 90vw);
+    aspect-ratio: 849 / 377;
+    background-image: url("LCD.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.screen {
+    position: absolute;
+    left: 8%;
+    top: 26.3%;
+    width: 84%;
+    height: 48.5%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    color: #344c08;
+    text-align: center;
+
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    font-size: clamp(18px, 3.1vw, 38px);
+    line-height: 1.55;
+    letter-spacing: 0.08em;
+}
+
+.line {
+    width: 100%;
+    white-space: nowrap;
+}
+
+#connect {
+    padding: 11px 22px;
+    border: 0;
+    border-radius: 8px;
+    background: #333;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#connect:hover {
+    background: #444;
+}
+
+#connect.hidden {
+    display: none;
+}
+
+#status {
+    min-height: 24px;
+    color: #aaa;
+    font-size: 16px;
+}
+
+#status.connected {
+    color: #7CFC00;
+}
+</style>
+</head>
+
+<body>
+
+<button id="connect" onclick="connectArduino()">Connect Arduino</button>
+
+<div class="lcd">
+    <div class="screen">
+
+        <!--
+        THIS IS THE ORIGINAL START SCREEN.
+        It is hard-coded, so it ALWAYS appears after refresh.
+        -->
+        <div class="line" id="line1">PRESS BUTTON</div>
+        <div class="line" id="line2">TO BEGIN</div>
+
+    </div>
+</div>
+
+<div id="status">Arduino: not connected</div>
+
+<script>
+
+/*
+=========================================================
+QUOTES
+=========================================================
+*/
+
+const quotes = [
+    ["YOU TRIED.", "THAT WAS BAD."],
+    ["ERROR 404:", "MOTIVATION GONE"],
+    ["GOOD JOB.", "I GUESS."],
+    ["KEEP GOING.", "NOBODY STOPPED YOU."],
+    ["SUCCESS?", "UNLIKELY."],
+    ["TRY AGAIN.", "OR DON'T."],
+    ["TODAY'S GOAL:", "SURVIVE."],
+    ["YOU TRIED.", "THAT WAS THE PROBLEM."],
+["ERROR 404:", "SKILL NOT FOUND."],
+["GOOD JOB.", "NOBODY NOTICED."],
+["KEEP GOING.", "IT'S FUNNY."],
+["YOU'RE SPECIAL.", "JUST NOT IN A GOOD WAY."],
+["BELIEVE IN YOURSELF.", "WE'VE LOST HOPE."],
+["NICE WORK.", "FOR A BEGINNER."],
+["WOW.", "YOU ACTUALLY DID THAT."],
+["MISSION FAILED.", "SPECTACULARLY."],
+["YOU HAD ONE JOB.", "AND YET..."],
+["CONGRATULATIONS.", "YOU DID THE BARE MINIMUM."],
+["GREAT IDEA.", "WHOSE WAS IT?"],
+["DON'T GIVE UP.", "GIVE SOMEONE ELSE A TURN."],
+["YOU'RE IMPROVING.", "VERY SLOWLY."],
+["KEEP DREAMING.", "IT'S FREE."],
+["ALMOST THERE.", "NOT REALLY."],
+["SO CLOSE.", "YET SO USELESS."],
+["IMPRESSIVE.", "BY ACCIDENT."],
+["WELL DONE.", "SOMEHOW."],
+["NICE ATTEMPT.", "PLEASE DON'T REPEAT IT."],
+["YOU'VE GOT THIS.", "PROBABLY NOT."],
+["EXCELLENT.", "WHO HELPED YOU?"],
+["LOOK AT YOU.", "TRYING YOUR BEST."],
+["THAT WAS FAST.", "UNFORTUNATELY."],
+["BIG BRAIN.", "TINY RESULTS."],
+["GENIUS.", "ALLEGEDLY."],
+["WHAT A MOVE.", "WHY THOUGH?"],
+["OUTSTANDING.", "IN THE WRONG DIRECTION."],
+["KEEP IT UP.", "WE NEED A LAUGH."],
+["YOU DID IT.", "WAS IT WORTH IT?"],
+["NICE PROGRESS.", "BACKWARDS IS STILL MOVEMENT."],
+["SUCCESS AWAITS.", "IT'S JUST NOT HERE."],
+["TRY HARDER.", "OR LOWER EXPECTATIONS."],
+["EXCELLENT CHOICE.", "FOR SOMEONE ELSE."],
+["YOU'RE ON FIRE.", "CALL THE FIRE DEPARTMENT."],
+["THAT'S ONE WAY.", "NOT A GOOD ONE."],
+["AMAZING.", "I'M SPEECHLESS."],
+["10/10.", "FOR ENTERTAINMENT."],
+["PERFECT.", "PERFECTLY TERRIBLE."],
+["WELL THAT HAPPENED.", "LET'S NEVER SPEAK OF IT."],
+["YOU'RE A LEGEND.", "A VERY CONFUSING ONE."],
+["BRILLIANT.", "IN THEORY."],
+["GOOD THINKING.", "UNFORTUNATELY, YOU DID IT."],
+["NICE TRY.", "THE TRY WAS NICE."],
+["WE BELIEVED.", "OUR MISTAKE."],
+["PROUD OF YOU.", "CONFUSED, BUT PROUD."],
+["KEEP GOING.", "THIS IS HILARIOUS."],
+["YOU CAN DO IT.", "JUST NOT THIS."],
+["ANOTHER VICTORY.", "FOR MEDIOCRITY."],
+["LEVEL UP!", "YOUR EXPECTATIONS."],
+["YOU'RE GETTING THERE.", "WHEREVER THAT IS."],
+["MISSION COMPLETE.", "QUALITY OPTIONAL."],
+["FINAL SCORE:", "EMOTIONAL DAMAGE."],
+["WOW.", "THAT'S UNFORTUNATE."],
+["YOU'RE UNIQUE.", "THANK GOD."],
+["GREAT EFFORT.", "QUESTIONABLE RESULT."],
+["KEEP TRYING.", "SOMEONE'S GOTTA LAUGH."],
+["69 QUOTES.", "NICE."],
+
+    ["NICE BUTTON.", "VERY IMPRESSIVE."],
+    ["YOU MADE IT.", "BARELY."],
+    ["CONGRATULATIONS.", "FOR WHAT?"],
+    ["WOW.", "THAT SURE HAPPENED."],
+    ["BELIEVE IN YOURSELF.", "JUST KIDDING."]
+];
+
+
+/*
+=========================================================
+RANDOM QUOTE
+=========================================================
+
+IMPORTANT:
+This function is NOT called when the page loads.
+
+The page therefore ALWAYS starts with:
+
+PRESS BUTTON
+TO BEGIN
+
+A random quote is selected only when Arduino sends
+NEXT or PRESSED.
+=========================================================
+*/
+
+let lastQuoteIndex = -1;
+
+function showRandomQuote() {
+
+    let newIndex;
+
+    do {
+        newIndex = Math.floor(Math.random() * quotes.length);
+    } while (
+        quotes.length > 1 &&
+        newIndex === lastQuoteIndex
+    );
+
+    lastQuoteIndex = newIndex;
+
+    document.getElementById("line1").textContent =
+        quotes[newIndex][0];
+
+    document.getElementById("line2").textContent =
+        quotes[newIndex][1];
+}
+
+
+/*
+=========================================================
+ARDUINO CONNECTION
+=========================================================
+*/
+
+async function connectArduino() {
+
+    if (!("serial" in navigator)) {
+        alert(
+            "Web Serial is not supported.\n\n" +
+            "Please use Google Chrome or Microsoft Edge."
+        );
+        return;
+    }
+
+    try {
+
+        const port = await navigator.serial.requestPort();
+
+        await port.open({
+            baudRate: 9600
+        });
+
+
+        /*
+        Hide Connect Arduino after successful connection.
+        */
+        document.getElementById("connect")
+            .classList.add("hidden");
+
+
+        /*
+        Keep the connection message at the bottom.
+        */
+        const status = document.getElementById("status");
+
+        status.textContent = "Arduino Connected ✓";
+        status.classList.add("connected");
+
+
+        /*
+        Read Arduino Serial data.
+        */
+        const decoder = new TextDecoderStream();
+
+        port.readable.pipeTo(decoder.writable);
+
+        const reader = decoder.readable.getReader();
+
+        let buffer = "";
+
+
+        while (true) {
+
+            const { value, done } = await reader.read();
+
+            if (done) {
+                break;
+            }
+
+            buffer += value;
+
+            const lines = buffer.split(/\r?\n/);
+
+            buffer = lines.pop();
+
+
+            for (const line of lines) {
+
+                const message = line.trim();
+
+                console.log("Arduino:", message);
+
+
+                /*
+                Your drum-roll Arduino sends NEXT.
+                The older Arduino sends PRESSED.
+
+                Either one changes the LCD.
+                */
+                if (
+                    message === "NEXT" ||
+                    message === "PRESSED"
+                ) {
+                    showRandomQuote();
+                }
+            }
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("status").textContent =
+            "Connection failed — try again.";
+
+        alert(
+            "Connection failed:\n\n" +
+            error.name + "\n" +
+            error.message
+        );
+    }
+}
+
+</script>
+
+</body>
+</html>
