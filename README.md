@@ -99,11 +99,13 @@ For Software:
 For Hardware:
 
 # Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
+<img width="1188" height="1296" alt="Untitled Sketch_bb" src="https://github.com/user-attachments/assets/ead9c125-e639-495f-a0a5-6ecddbdb0581" />
 
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
+*Circuit connections: push button → Arduino D2 + GND; buzzer → Arduino D4 + GND; Arduino → laptop via USB for power and serial communication.*
+
+<img width="627" height="849" alt="Untitled Sketch_schem" src="https://github.com/user-attachments/assets/be55e64a-5e3c-4548-8cf4-fbd83d08a5ad" />
+
+*Circuit connections: push button → Arduino D2 + GND; buzzer → Arduino D4 + GND; Arduino → laptop via USB for power and serial communication.*
 
 # Build Photos
 ![Components](Add photo of your components here)
@@ -121,7 +123,10 @@ For Hardware:
 *Explain what the video demonstrates*
 
 # Additional Demos
-[Add any extra demo materials/links]
+<img width="1366" height="768" alt="Recording2026-09-12041439-ezgif com-optimize" src="https://github.com/user-attachments/assets/be662c3c-f5a3-4d36-958f-787578b903b7" />
+
+
+
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
