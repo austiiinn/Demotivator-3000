@@ -2,34 +2,47 @@
 
 
 
-# [Project Name] 🎯
+# DEMOTIVATOR 3000 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Austin Sebastian
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Austin Sebastian - Lourdes Matha College of Science and Technology
 
 ### Project Description
-[2-3 lines about what your project does]
+DEMOTIVATOR 3000 is a completely unnecessary machine that gives you a random demotivational message whenever you press a button.
+
+A physical button connected to an Arduino triggers a dramatic electronic selection sequence, after which a retro-style LCD interface displays a random message designed to provide absolutely zero motivation.
+Instead of providing motivation, productivity, or literally anything useful, it uses an Arduino, a buzzer, and a retro-style web interface to remind you that your efforts could have been better.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+People occasionally feel the need for motivation.
+Unfortunately, there is already an excessive amount of motivational content everywhere.
+Nobody has made a machine specifically designed to make you regret asking for motivation.
+.
+ .
+#### Until now.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+I built the DEMOTIVATOR 3000.
+
+Press the physical button and the Arduino starts a dramatic selection sequence using a buzzer while communicating with a web-based LCD interface.
+After the sequence, the display reveals a randomly selected demotivational quote.
+
+It serves no practical purpose.
+
+And that's EXACTLY why it exists.
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
+- C++, HTML, CSS, Javascript
 - [Frameworks used]
 - [Libraries used]
-- [Tools used]
+- Arduino IDE, Chrome, ChatGPT
 
 For Hardware:
 - [List main components]
