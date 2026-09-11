@@ -1,3 +1,4 @@
+<img width="1536" height="1024" alt="ChatGPT Image Sep 12, 2026, 03_47_16 AM" src="https://github.com/user-attachments/assets/d425dcce-1319-47a9-9756-d7ee9f0fc0c2" />
 <img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
 
@@ -92,8 +93,9 @@ For Software:
 *Arduino code*
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+<img width="1536" height="1024" alt="ChatGPT Image Sep 12, 2026, 03_47_16 AM" src="https://github.com/user-attachments/assets/e6279afd-5b5d-41d0-802c-fc5191dbd753" />
+
+*Workflow showing how a button press is processed by the Arduino, communicated to the webpage via USB Serial, and converted into a random demotivational message on the LCD interface.*
 
 For Hardware:
 
