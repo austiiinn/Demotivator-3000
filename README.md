@@ -40,31 +40,51 @@ And that's EXACTLY why it exists.
 ### Technologies/Components Used
 For Software:
 - C++, HTML, CSS, Javascript
-- [Frameworks used]
-- [Libraries used]
+- Frameworks used: None
+- Libraries used: None
 - Arduino IDE, Chrome, ChatGPT
 
 For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+- Arduino board
+- Push button
+- Buzzer
+- Breadboard
+- Jumper wires
+- USB cable
+- Laptop/PC
+
+Specifications:
+- Arduino digital pin 2 → Push button
+- Arduino digital pin 4 → Buzzer
+- Button configured using INPUT_PULLUP
+- Serial communication: 9600 baud
+- USB used for Arduino-to-PC communication
+- Browser receives Arduino commands using Web Serial API
+- HTML/CSS interface acts as the visual LCD
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+Install Arduino IDE
 
 # Run
-[commands]
+1. Open "Demotivator.html" in Google Chrome or Microsoft Edge.
+2. Click **Connect Arduino**.
+3. Select the Arduino's COM port.
+4. Press the physical button.
+5. The Arduino triggers the buzzer and sends serial commands to the webpage.
+6. The webpage displays a randomly selected demotivational quote.
 
 ### Project Documentation
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/e4576d90-aeee-4db1-a57b-24f5f0c834ae" />
+
 *Add caption explaining what this shows*
 
-![Screenshot2](Add screenshot 2 here with proper name)
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/8ff17143-ff7e-4612-affa-11ba5f976c26" />
+
 *Add caption explaining what this shows*
 
 ![Screenshot3](Add screenshot 3 here with proper name)
@@ -100,11 +120,6 @@ For Hardware:
 
 # Additional Demos
 [Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
