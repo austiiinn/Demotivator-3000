@@ -108,14 +108,17 @@ For Hardware:
 *Circuit connections: push button → Arduino D2 + GND; buzzer → Arduino D4 + GND; Arduino → laptop via USB for power and serial communication.*
 
 # Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
+<img width="2480" height="3307" alt="IMG_20260912_042122_003" src="https://github.com/user-attachments/assets/284e66bf-4fe8-45db-a5ce-114c93fad23a" />
 
-![Build](Add photos of build process here)
-*Explain the build steps*
+*Arduino, buzzer, button*
 
-![Final](Add photo of final product here)
-*Explain the final build*
+<img width="2480" height="3307" alt="IMG_20260912_042131_515" src="https://github.com/user-attachments/assets/2f7cae40-b437-4643-9a12-c0ff97791615" />
+
+*The Arduino, button, and buzzer were connected on a breadboard, then connected to the laptop via USB and tested with the webpage.*
+
+<img width="3307" height="2480" alt="IMG_20260912_042126_387" src="https://github.com/user-attachments/assets/15fa24a3-df42-411d-b413-bd69dd5b1fe0" />
+
+*The final build combines the Arduino, button, and buzzer with the web-based LCD interface, creating a functional DEMOTIVATOR 3000.*
 
 ### Project Demo
 # Video
