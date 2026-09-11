@@ -81,14 +81,15 @@ For Software:
 # Screenshots (Add at least 3)
 <img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/e4576d90-aeee-4db1-a57b-24f5f0c834ae" />
 
-*Add caption explaining what this shows*
+*Title screen*
 
 <img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/8ff17143-ff7e-4612-affa-11ba5f976c26" />
 
-*Add caption explaining what this shows*
+*Example*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="417" height="404" alt="image" src="https://github.com/user-attachments/assets/7d7834f0-a9de-4460-892d-18088ae63d89" />
+
+*Arduino code*
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
