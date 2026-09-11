@@ -122,8 +122,8 @@ For Hardware:
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+https://youtube.com/watch?v=84pq9Fvrwsg&si=B48yIzzb-hB-Yr1M
+*Working*
 
 # Additional Demos
 <img width="1366" height="768" alt="Recording2026-09-12041439-ezgif com-optimize" src="https://github.com/user-attachments/assets/be662c3c-f5a3-4d36-958f-787578b903b7" />
